@@ -1,0 +1,91 @@
+﻿@model Exam
+@{
+    ViewData["Title"] = "Toetsonderdeel aanmaken";
+}
+
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label asp-for="ExamType"></label>
+                    <input asp-for="ExamType" />
+                    <span asp-validation-for="ExamType" class="text-danger"></span>
+                </div>
+                <div class="input-field col s6">
+                    <label asp-for="GradeType"></label>
+                    <input asp-for="GradeType" />
+                    <span asp-validation-for="GradeType" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label asp-for="Language"></label>
+                    <input asp-for="Language" />
+                    <span asp-validation-for="Language" class="text-danger"></span>
+                </div>
+                <div class="input-field col s6">
+                    <label asp-for="ResponsibleTeacher"></label>
+                    <input asp-for="ResponsibleTeacher" />
+                    <span asp-validation-for="ResponsibleTeacher" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label asp-for="PassingGrade"></label>
+                    <input asp-for="PassingGrade" />
+                    <span asp-validation-for="PassingGrade" class="text-danger"></span>
+                </div>
+                <div class="input-field col s6">
+                    <label>
+                        <input asp-for="Compensatable" type="checkbox" />
+                        <span>@Html.DisplayNameFor(model => model.Compensatable)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <label asp-for="EC"></label>
+                    <input asp-for="EC" />
+                    <span asp-validation-for="EC" class="text-danger"></span>
+                </div>
+                <div class="input-field col s6">
+                    <label asp-for="Weight"></label>
+                    <input asp-for="Weight" />
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <label asp-for="Duration" class=""></label>
+                    <input asp-for="Duration" type="text" class="timepicker" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+                <div class="input-field col s4">
+                    <label asp-for="AttemptOne" class=""></label>
+                    <input asp-for="AttemptOne" type="text" class="datepicker datepicker-exam" />
+                    <span asp-validation-for="AttemptOne" class="text-danger"></span>
+                </div>
+                <div class="input-field col s4">
+                    <label asp-for="AttemptTwo" class=""></label>
+                    <input asp-for="AttemptTwo" type="text" class="datepicker datepicker-exam" />
+                    <span asp-validation-for="AttemptTwo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="input-field">
+                <input type="submit" value="Aanmaken" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Exam>
+
+@{
+	ViewData["Title"] = "Index";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+	<div class="col s12">
+		<h2>Toetsonderdelen</h2>
+		@await Html.PartialAsync(PartialConstants.CreateButton, "Toetsonderdeel")
+
+		<app-data-table data-records='@Html.Raw(Json.Serialize(Model.ToList()))'
+						data-limit="10"
+						data-columns="name:Omschrijving,language:Taal,examType:Soort examen,ec:EC,weight:Gewicht,responsibleTeacher.fullName:Docent"
+						data-url_details="@Url.Action("details", "exam", null)" />
+	</div>
+</div>

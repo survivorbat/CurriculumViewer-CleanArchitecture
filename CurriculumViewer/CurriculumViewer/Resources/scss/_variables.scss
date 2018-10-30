@@ -1,0 +1,7 @@
+﻿$primary-color: #C6002A;
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: $primary-color-light;
+$error-color: $primary-color;
+$link-color: #00ACEB;

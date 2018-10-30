@@ -1,0 +1,22 @@
+@model IEnumerable<LogItem>
+
+<div class="row">
+	<div class="col s12">
+		<h4>Recente activiteit</h4>
+		<ul>
+			@foreach (LogItem logItem in Model.OrderByDescending(e => e.CreatedAt).Take(5))
+			{
+				<li class="flex justify-between w-100">
+					<span>@logItem.Message</span>
+					<span class="text-no-whitespace">@logItem.CreatedAt</span>
+				</li>
+			}
+			@if (Model.Count() == 0)
+			{
+				<li>
+					<em>Geen recente activiteit om weer te geven</em> 
+				</li>
+			}
+		</ul>
+	</div>
+</div>

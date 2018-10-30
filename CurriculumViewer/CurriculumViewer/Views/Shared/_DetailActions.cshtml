@@ -1,0 +1,12 @@
+﻿<div class="row">
+	<div class="col s12">
+		<a asp-action="Index"><button class="btn small-text">Terug naar overzicht</button></a>
+		<a asp-action="Edit" asp-route-id="@Model.Id"><button class="btn small-text">Aanpassen</button></a>
+		@if (User.IsInRole("Admin"))
+		{
+			<form asp-action="Delete" asp-route-id="@Model.Id" class="inline">
+				<button type="submit" class="btn small-text">Verwijderen</button>
+			</form>
+		}
+	</div>
+</div>

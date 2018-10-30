@@ -1,0 +1,30 @@
+{
+	"name": "curriculumviewer.webui",
+	"version": "1.0.0",
+	"description": "Curriculumviewer Avans University",
+	"main": "js/site.js",
+	"scripts": {
+		"postinstall": "webpack",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cachable": "^1.0.0",
+		"css-loader": "^1.0.0",
+		"file-loader": "^2.0.0",
+		"jquery": "^3.3.1",
+		"materialize-css": "^1.0.0-rc.2",
+		"mini-css-extract-plugin": "^0.4.3",
+		"node-sass": "^4.9.3",
+		"optimize-css-assets-webpack-plugin": "^5.0.1",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"uglifyjs-webpack-plugin": "^2.0.1",
+		"vue": "^2.5.17",
+		"vue-loader": "^15.4.2",
+		"vue-template-compiler": "^2.5.17",
+		"webpack": "^4.20.2",
+		"webpack-cli": "^3.1.2"
+	}
+}

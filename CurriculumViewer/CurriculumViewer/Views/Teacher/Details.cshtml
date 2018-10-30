@@ -1,0 +1,29 @@
+﻿@model Teacher
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = Model.FullName, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>Docent @Model.FullName</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s4">
+		<h3>Verantwoordelijk voor modules:</h3>
+		@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.ResponsibleForModules.Select(e => e.Module).OrderBy(e => e.Name), expression = ListComponentFieldTypes.Name })
+	</div>
+	<div class="col s4">
+		<h3>Verantwoordelijk voor courses:</h3>
+		@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.ResponsibleForCourses.OrderBy(e => e.Name), expression = ListComponentFieldTypes.Name })
+	</div>
+	<div class="col s4">
+		<h3>Verantwoordelijk voor toetsonderdelen:</h3>
+		@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.ResponsibleForExams.OrderBy(e => e.Id), expression = ListComponentFieldTypes.Name })
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)

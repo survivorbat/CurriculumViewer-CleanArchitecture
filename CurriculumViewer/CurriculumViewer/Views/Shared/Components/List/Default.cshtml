@@ -1,0 +1,15 @@
+﻿@model ListComponentViewModel
+
+@if (Model.Items.Count() < 1)
+{
+	<em>Er zijn geen items om weer te geven</em>
+}
+else
+{
+	<ul class="data-list">
+		@foreach (var item in Model.Items)
+		{
+			<li><a asp-controller="@item.GetType().Name" asp-action="Details" asp-route-id="@item.GetType().GetProperty("Id").GetValue(item, null)">@item.GetType().GetProperty(Model.Expression).GetValue(item, null)</a></li>
+		}
+	</ul>
+}

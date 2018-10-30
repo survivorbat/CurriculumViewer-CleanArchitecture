@@ -1,0 +1,45 @@
+﻿@model Exam
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = Model.Name, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>Toetsonderdeel @Model.Name</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s9 details-main">
+		<p><strong>@Html.DisplayNameFor(model => model.ExamType)</strong></p>
+		<p>@Html.DisplayFor(model => model.ExamType)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.AttemptOne)</strong></p>
+		<p>@Html.DisplayFor(model => model.AttemptOne)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.AttemptTwo)</strong></p>
+		<p>@Html.DisplayFor(model => model.AttemptTwo)</p>
+		<p><strong>Bijbehorende module</strong></p>
+		<p><a asp-action="details" asp-controller="Module" asp-route-id="@Model.Module.Id">@Html.DisplayFor(model => model.Module.Name)</a></p>
+		<p><strong>Verantwoordelijke docent</strong></p>
+		<p><a asp-action="details" asp-controller="Teacher" asp-route-id="@Model.ResponsibleTeacher.Id">@Html.DisplayFor(model => model.ResponsibleTeacher.FullName)</a></p>
+	</div>
+	<div class="col s3 details-side">
+		<p><strong>@Html.DisplayNameFor(model => model.Language)</strong></p>
+		<p>@Html.DisplayFor(model => model.Language)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.EC)</strong></p>
+		<p>@Html.DisplayFor(model => model.EC)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.PassingGrade)</strong></p>
+		<p>@Html.DisplayFor(model => model.PassingGrade)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.Compensatable)</strong></p>
+		<p>@Html.DisplayFor(model => model.Compensatable)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.Weight)</strong></p>
+		<p>@Html.DisplayFor(model => model.Weight)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.GradeType)</strong></p>
+		<p>@Html.DisplayFor(model => model.GradeType)</p>
+		<p><strong>@Html.DisplayNameFor(model => model.Duration)</strong></p>
+		<p>@Html.DisplayFor(model => model.Duration) minuten</p>
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)

@@ -1,0 +1,32 @@
+﻿@using System.Drawing
+@model NavBarViewModel
+
+<nav class="row app-nav">
+    <div class="col s9">
+		<ul class="flex">
+			<li><a asp-controller="Home" asp-action="Index">Home</a></li>
+			<li><a asp-controller="Examprogram" asp-action="Index">Examenprogramma's</a></li>
+			<li><a asp-controller="Course" asp-action="Index">Periodes</a></li>
+			<li><a asp-controller="Module" asp-action="Index">Vakken</a></li>
+			<li><a asp-controller="Teacher" asp-action="Index">Docenten</a></li>
+			<li><a asp-controller="LearningLine" asp-action="Index">Leerlijnen</a></li>
+			@if (User.IsInRole("Admin"))
+			{
+				<li><a asp-controller="RoleAdmin" asp-action="Index">Rollen</a></li>
+			}
+			<li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+		</ul>
+    </div>
+    
+    <div class="col s1">
+        <ul>
+            <li style="color: #C6002A">
+                @User.Identity.Name
+            </li>
+        </ul>
+    </div>
+
+    <div class="col s2">
+        <img class="responsive-img nav-logo" src="~/images/logo.png" alt="Avans Hogeschool logo"/>
+    </div>
+</nav>

@@ -1,0 +1,16 @@
+﻿@model BreadCrumbViewModel
+
+<div class="row small-spacing">
+	<div class="col s12">
+		@foreach (var crumb in Model.Crumbs.Select((value, index) => new {value, index}))
+		{
+		<a asp-controller="@crumb.value.Controller" asp-action="@crumb.value.Action" asp-route-id="@crumb.value.Id" class="text-capitalize">
+			<span class="text-primary hover-underline">@crumb.value.Name</span>
+			@if (crumb.index != Model.Crumbs.Count - 1)
+			{
+				<span>></span>
+			}
+		</a>
+		}
+	</div>
+</div>

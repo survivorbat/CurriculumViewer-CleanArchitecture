@@ -1,0 +1,35 @@
+﻿@model Teacher
+@{
+    ViewData["Title"] = "Docent aanmaken";
+}
+
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="input-field">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <label asp-for="MiddleName"></label>
+                <input asp-for="MiddleName" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <input type="submit" value="Opslaan" class="btn" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>

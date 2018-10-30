@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Module>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <h2>Vakken</h2>
+        @await Html.PartialAsync("_CreateButton", "Vak")
+        <app-data-table data-records='@Html.Raw(Json.Serialize(Model.ToList()))'
+                        data-limit="10"
+                        data-columns="name:Naam,osirisCode:Osiris Code"
+                        data-url_details="@Url.Action("details", "module", null)" />
+    </div>
+</div>

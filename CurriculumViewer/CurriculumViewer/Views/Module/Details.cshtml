@@ -1,0 +1,42 @@
+﻿@model Module
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = Model.Name, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>@Html.DisplayFor(model => model.Name)</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s8 details-main">
+		<pre>@Html.DisplayFor(model => model.Description)</pre>
+	</div>
+	<div class="col s4 details-side">
+		<p>
+			<strong>@Html.DisplayNameFor(model => model.OsirisCode)</strong>
+		</p>
+		<p>
+			@Html.DisplayFor(model => model.OsirisCode)
+		</p>
+		<p><strong>In courses</strong></p>
+		<p>@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.InCourses.Select(e => e.Course).OrderBy(e => e.Name), expression = ListComponentFieldTypes.Name })</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s8">
+		<p><strong>Leerdoelen</strong></p>
+		<p>@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.Goals.OrderBy(e => e.Description), expression = ListComponentFieldTypes.Description })</p>
+	</div>
+	<div class="col s4 details-side">
+		<p><strong>Bijbehorende toetsonderdelen</strong></p>
+		<p>@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.Exams.OrderBy(e => e.AttemptOne), expression = ListComponentFieldTypes.Name })</p>
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)
+<a asp-action="GenerateGuide" asp-route-id="@Model.Id"><button class="btn small-text">Download Leerwijzer</button></a>

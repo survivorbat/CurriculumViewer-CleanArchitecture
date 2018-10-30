@@ -1,0 +1,66 @@
+@import "_variables.scss";
+
+.data-table {
+	td {
+		min-width: 10em;
+	}
+
+	select {
+		height: initial;
+	}
+
+	.data-row {
+		transition: 0.2s;
+		border-style: solid;
+		border-width: 0;
+		border-color: $primary-color;
+		box-sizing: content-box;
+		&:hover {
+			border-left-width: 0.5em;
+		}
+	}
+
+	th {
+		white-space: nowrap;
+		text-transform: capitalize;
+		padding: 0.25em 0;
+	}
+
+	a, a:hover, a:link, &:focus, &:visited {
+		color: black;
+	}
+
+	input {
+		font-weight: bold;
+	}
+}
+
+.data-list {
+	li {
+		margin: 0.35em 0;
+		&::before {
+			content: "- "
+		}
+	}
+}
+
+pre {
+	font-family: 'Frutiger', helvetica, sans-serif;
+	white-space: pre-wrap; /* Since CSS 2.1 */
+	white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+	margin: 0;
+	padding: 0;
+}
+
+p.default-checkbox > input {
+    position: relative !important;
+    opacity: 100 !important;
+}
+
+.timepicker-span-hours.text-primary,
+.timepicker-span-minutes {
+    color: #fff;
+}

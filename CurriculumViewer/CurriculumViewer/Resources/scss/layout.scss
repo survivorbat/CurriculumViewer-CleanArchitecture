@@ -1,0 +1,103 @@
+@import "_variables.scss";
+
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Frutiger', Verdana;
+	font-size: 1.05em;
+}
+
+.app-header {
+	background-color: $primary-color;
+	height: 0.5em;
+}
+
+.app-nav {
+	padding: 1em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+
+	.nav-logo {
+		padding: 0 1.4em;
+	}
+
+	ul {
+		font-weight: bolder;
+		font-size: 1.2em;
+		margin: 0;
+		padding: 0;
+
+		li {
+			margin: 0.4em;
+			padding: 0.5em;
+			cursor: pointer;
+
+			&:hover {
+				background-color: lightgray;
+				color: $primary-color;
+			}
+		}
+	}
+}
+
+.app-aside {
+    background-color: #eee;
+    min-height: 90vh !important;
+    margin-left: 0;
+    padding-left: 0;
+
+    .collapsible {
+        border: none;
+        background: none;
+        box-shadow: none;
+
+        .active {
+            .collapsible-header {
+                border-left: solid 5px $primary-color;
+            }
+            .collapsible-body .row .col .collapsible-header {
+                border-left-width: 3px;
+            }
+        }
+
+        .collapsible-header {
+            transition: 0.25s;
+            margin: 0;
+            padding: 0.75em;
+            background: none;
+            border: none;
+        }
+
+        .collapsible-body {
+            border-left: solid 5px $primary-color;
+            padding: 0em 0em 0em 1em;
+            border-bottom: none;
+            font-size: 0.8em;
+            color: gray;
+
+            .row .col .collapsible-body {
+                border-left-width: 3px;
+            }
+            ul li ul li {
+                padding: 0.5em 0em;
+                
+
+                &::before {
+                    content: "- ";
+                }
+            }
+        }
+    }
+}
+
+.app-footer {
+	padding: 10em 0 10em 0;
+}
+
+.details-side p:first-child {
+	margin-top: 0;
+}
+
+.details-main p:first-child {
+	margin-top: 0;
+}

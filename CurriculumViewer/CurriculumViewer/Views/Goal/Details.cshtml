@@ -1,0 +1,28 @@
+﻿@model Goal
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = "Leerdoel " + Model.Id, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>Leerdoel</h2>
+		<pre>@Html.DisplayFor(model => model.Description)</pre>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s9 details-main">
+		<p><strong>Behoort tot module:</strong></p>
+		<p><a asp-action="Details" asp-controller="Module" asp-route-id="@Model.Module.Id">@Html.DisplayFor(e => e.Module.Name)</a></p>
+	</div>
+	<div class="col s3 details-side">
+		<p><strong>@Html.DisplayNameFor(model => model.Bloom)</strong></p>
+		<p>@Html.DisplayFor(model => model.Bloom)</p>
+		<p><strong>Bevindt zich in leerlijnen:</strong></p>
+		<p>@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.InLearningLines.Select(e => e.LearningLine).OrderBy(e => e.Name), expression = ListComponentFieldTypes.Name })</p>
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)

@@ -1,0 +1,21 @@
+﻿@model ExamProgram
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = Model.Name, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>Examenprogramma @Model.Name</h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6 details-main">
+		<h3>Programmaonderdelen:</h3>
+		@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.Courses.OrderBy(e => e.Name), expression = ListComponentFieldTypes.Name })
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)

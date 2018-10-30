@@ -1,0 +1,30 @@
+.btn {
+	background-color: $primary-color;
+	margin: 1px;
+
+	&:hover {
+		background-color: $primary-color-light;
+	}
+
+	&:focus, :active, :visited {
+		background-color: $primary-color-dark;
+	}
+}
+
+.btn-flat {
+    background-color: $primary-color;
+    margin: 1px;
+    color: #fff;
+
+    &:hover {
+        background-color: $primary-color-light;
+    }
+
+    &:focus, :active, :visited {
+        background-color: $primary-color-dark;
+    }
+}
+
+.btn-sm {
+	padding: 0.25em;
+}

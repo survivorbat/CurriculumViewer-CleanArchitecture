@@ -1,0 +1,10 @@
+@model MultiSelectComponentViewModel
+
+@if (Model.Items.Count() < 1)
+{
+	<em>Er zijn geen @Model.GetType().Name items om weer te geven</em>
+}
+else
+{
+	<app-select-list data-currentvalues='@Html.Raw(Json.Serialize(Model.CurrentValues.ToArray()))' data-inputName="@Model.InputName" data-records='@Html.Raw(Json.Serialize(Model.Items.ToList()))'></app-select-list>
+}

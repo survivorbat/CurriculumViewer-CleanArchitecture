@@ -1,0 +1,59 @@
+﻿@import "../../node_modules/materialize-css/sass/components/_normalize.scss";
+@import "../../node_modules/materialize-css/sass/components/_color-variables.scss";
+@import "../../node_modules/materialize-css/sass/components/_color-classes.scss";
+@import "../../node_modules/materialize-css/sass/components/_variables.scss";
+@import "../../node_modules/materialize-css/sass/components/_global.scss";
+@import "../../node_modules/materialize-css/sass/components/_icons-material-design.scss";
+@import "../../node_modules/materialize-css/sass/components/_grid.scss";
+@import "../../node_modules/materialize-css/sass/components/_transitions.scss";
+@import "../../node_modules/materialize-css/sass/components/_materialbox.scss";
+@import "../../node_modules/materialize-css/sass/components/_cards.scss";
+@import "../../node_modules/materialize-css/sass/components/_modal.scss";
+@import "../../node_modules/materialize-css/sass/components/_waves.scss";
+@import "../../node_modules/materialize-css/sass/components/_buttons.scss";
+@import "../../node_modules/materialize-css/sass/components/_collapsible.scss";
+@import "../../node_modules/materialize-css/sass/components/_dropdown.scss";
+@import "../../node_modules/materialize-css/sass/components/forms/_forms.scss";
+@import "../../node_modules/materialize-css/sass/components/_tapTarget.scss";
+@import "../../node_modules/materialize-css/sass/components/_datepicker.scss";
+@import "../../node_modules/materialize-css/sass/components/_timepicker.scss";
+@import "../../node_modules/materialize-css/sass/components/_slider.scss";
+@import "../../node_modules/materialize-css/sass/components/_pulse.scss";
+@import "../../node_modules/materialize-css/sass/components/_preloader.scss";
+@import "../../node_modules/materialize-css/sass/components/_tabs.scss";
+
+.datepicker-table td.is-selected {
+    background-color: #c6002a;
+    color: #fff;
+}
+
+.datepicker-table td.is-today {
+    color: #c6002a;
+}
+
+select.datepicker-select.orig-select-month,
+select.datepicker-select.orig-select-year {
+    display: none;
+}
+
+select {
+	display: initial;
+}
+
+.responsive-table {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.timepicker-canvas-bearing,
+.timepicker-canvas-bg {
+    fill: #c6002a;
+}
+
+.timepicker-canvas line {
+    stroke: #c6002a;
+}
+.timepicker-digital-display,
+.datepicker-date-display {
+    background-color: #c6002a;
+}

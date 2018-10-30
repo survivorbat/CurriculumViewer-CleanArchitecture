@@ -1,0 +1,33 @@
+﻿@model Course
+
+@{
+	ViewData["Title"] = "Details";
+}
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs, new { objectName = Model.Name, ObjectId = Model.Id })
+
+<div class="row">
+	<div class="col s12">
+		<h2>Course @Html.DisplayFor(Model => Model.Name)</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col s9 details-main">
+		<pre>@Html.DisplayFor(model => model.Description)</pre>
+	</div>
+	<div class="col s3 details-side">
+		<p><strong>Examenprogramma</strong></p>
+		@if (Model.ExamProgram != null)
+		{
+			<p><a asp-controller="ExamProgram" asp-action="Details" asp-route-id="@Model.ExamProgram.Id">@Html.DisplayFor(model => model.ExamProgram.Name)</a></p>
+		} else
+		{
+			<em>Geen examenprogramma ingesteld</em>
+		}
+		<p><strong>Coördinator</strong></p>
+		<p><a asp-controller="Teacher" asp-action="Details" asp-route-id="@Model.Mentor.Id">@Html.DisplayFor(model => model.Mentor.FullName)</a></p>
+		<p><strong>Modules</strong></p>
+		<p>@await Component.InvokeAsync(ViewComponentConstants.List, new { data = Model.Modules.Select(e => e.Module).OrderBy(e => e.Name), expression = "Name" })</p>
+	</div>
+</div>
+
+@await Html.PartialAsync(PartialConstants.DetailActions, Model)

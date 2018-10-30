@@ -1,0 +1,56 @@
+﻿@model ModuleCreateUpdateViewModel
+@{
+    ViewData["Title"] = "Module aanmaken";
+}
+
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="input-field">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<label asp-for="Description"></label>
+				<textarea asp-for="Description" class="materialize-textarea"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<label asp-for="OsirisCode"></label>
+				<input asp-for="OsirisCode" />
+				<span asp-validation-for="OsirisCode" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<strong>Docent</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.SingleSelect, new { items = ViewData["t"], expression = ListComponentFieldTypes.FullName, inputName = nameof(Model.TeacherId) })
+			</div>
+			<div class="input-field">
+				<strong>Toetsonderdelen</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.MultiSelect, new { items = ViewData["e"], expression = ListComponentFieldTypes.Name, inputName = nameof(Model.ExamsIds) })
+			</div>
+			<div class="input-field">
+				<strong>Leerdoelen</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.MultiSelect, new { items = ViewData["g"], expression = ListComponentFieldTypes.Description, inputName = nameof(Model.GoalsIds) })
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Opslaan" class="btn" />
+			</div>
+		</form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync(PartialConstants.ValidationScripts);}
+}

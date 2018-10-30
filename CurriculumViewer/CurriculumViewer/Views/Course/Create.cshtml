@@ -1,0 +1,47 @@
+﻿@model CourseCreateUpdateViewModel
+@{
+    ViewData["Title"] = "Course aanmaken";
+}
+
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="input-field">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<label asp-for="Description"></label>
+				<textarea asp-for="Description" class="materialize-textarea"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<strong>Docent</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.SingleSelect, new { items = ViewData["Teachers"], expression = ListComponentFieldTypes.FullName, inputName = nameof(Model.MentorId) })
+			</div>
+			<div class="input-field">
+				<p><strong>Selecteer examenprogramma</strong></p>
+				@await Component.InvokeAsync(ViewComponentConstants.SingleSelect, new { InputName = nameof(Model.ExamProgramId), items = ViewData["Examprograms"], expression = ListComponentFieldTypes.Name })
+			</div>
+			<div class="input-field">
+				<p><strong>Selecteer modules</strong></p>
+				@await Component.InvokeAsync(ViewComponentConstants.MultiSelect, new { InputName = nameof(Model.ModuleIds), items = ViewData["Modules"], expression = ListComponentFieldTypes.Name })
+			</div>
+			<div class="input-field">
+				<input type="submit" value="Create" class="btn" />
+			</div>
+		</form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>

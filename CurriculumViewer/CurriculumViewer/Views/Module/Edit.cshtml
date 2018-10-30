@@ -1,0 +1,57 @@
+﻿@model ModuleCreateUpdateViewModel
+@{
+    ViewData["Title"] = "Module aanpassen";
+}
+
+@await Component.InvokeAsync(ViewComponentConstants.BreadCrumbs)
+
+<div class="row">
+    <div class="col s12">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<div class="input-field">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<label asp-for="Description"></label>
+				<textarea asp-for="Description" class="materialize-textarea"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<label asp-for="OsirisCode"></label>
+				<input asp-for="OsirisCode" />
+				<span asp-validation-for="OsirisCode" class="text-danger"></span>
+			</div>
+			<div class="input-field">
+				<strong>Docent</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.SingleSelect, new { items = ViewData["t"], expression = ListComponentFieldTypes.FullName, inputName = nameof(Model.TeacherId), currentValue = Model?.Teacher?.Id + "" ?? "0" })
+			</div>
+			<div class="input-field">
+				<strong>Toetsonderdelen</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.MultiSelect, new { items = ViewData["e"], expression = ListComponentFieldTypes.Name, inputName = nameof(Model.ExamsIds), currentValues = Model.Exams.Select(e => e.Id + "").ToArray() })
+			</div>
+			<div class="input-field">
+				<strong>Leerdoelen</strong>
+				@await Component.InvokeAsync(ViewComponentConstants.MultiSelect, new { items = ViewData["g"], expression = ListComponentFieldTypes.Description, inputName = nameof(Model.GoalsIds), currentValues = Model.Goals.Select(e => e.Id + "").ToArray() })
+			</div>
+			<div class="input-field">
+				<input type="submit" value="Opslaan" class="btn" />
+			</div>
+		</form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync(PartialConstants.ValidationScripts);}
+}

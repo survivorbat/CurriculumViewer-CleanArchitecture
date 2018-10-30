@@ -1,0 +1,9 @@
+﻿@model SingleSelectComponentViewModel
+
+<select name="@Model.InputName">
+	@foreach (var item in Model.Items)
+	{
+		bool selected = item.GetType().GetProperty("Id").GetValue(item, null).ToString() == Model.CurrentValue;
+		<option value="@item.GetType().GetProperty("Id").GetValue(item, null)" selected="@selected">@item.GetType().GetProperty(Model.Expression).GetValue(item, null)</option>
+	}
+</select>

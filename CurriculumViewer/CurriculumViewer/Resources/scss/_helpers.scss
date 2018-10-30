@@ -1,0 +1,58 @@
+﻿@import "_variables.scss";
+
+.flex {
+	display: flex;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-right {
+	justify-content: flex-end;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.text-primary {
+	color: $primary-color;
+}
+
+.text-no-whitespace {
+	overflow-wrap: normal;
+	white-space: nowrap;
+}
+
+.small-spacing {
+	padding: 0.1em;
+	margin: 0.1em;
+}
+
+.small-text {
+	font-size: 0.85em;
+}
+
+.inline {
+	display: inline;
+}
+
+.p-padding {
+	margin-top: 1em;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
+}
+
+.hover-underline {
+	transition: 0.5s;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.font-weight-bold {
+	font-weight: bold;
+}
